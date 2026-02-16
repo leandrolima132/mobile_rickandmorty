@@ -24,7 +24,6 @@ class CharacterDatasourceImpl implements CharacterDatasource {
       // Converte Model -> Entity usando o Mapper
       return CharacterMapper.toEntityList(responseModel.results);
     } catch (e) {
-      print('CharacterDatasource Error: $e');
       rethrow;
     }
   }

@@ -36,21 +36,11 @@ class ApiService {
     }
 
     try {
-      print(
-          'DioRequest >>>> [Endpoint: (GET) $path] : [QueryParameters: $queryParameters]');
       final response = await _dio!.get(path, queryParameters: queryParameters);
-      // quantos characters foram retornados por pagina
-      print('Count: ${response.data['info']['count']}');
-      print('Pages: ${response.data['info']['pages']}');
-      print(
-          'DioResponse <<<< [Endpoint: (GET) $path] : [Status: ${response.statusCode}]');
       return response;
     } on DioException catch (e) {
-      print('DioError <<<< [Endpoint: (GET) $path] : [Error: ${e.message}]');
-      print('DioError <<<< [Response: ${e.response?.data}]');
       throw Exception('Failed to load data: ${e.message}');
     } catch (e) {
-      print('DioError <<<< [Endpoint: (GET) $path] : [Error: $e]');
       throw Exception('Unexpected error: $e');
     }
   }
